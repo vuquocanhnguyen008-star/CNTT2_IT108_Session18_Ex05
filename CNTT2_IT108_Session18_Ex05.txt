@@ -1,0 +1,34 @@
+# Bài 5: Tối ưu tiện ích mở rộng cho hệ thống điều phối vận tải
+
+## Phần 1. Phân tích
+Vai trò của JSON Viewer trong việc gỡ lỗi dữ liệu API:
+- Dữ liệu API GPS từ máy chủ trả về thường là một chuỗi JSON dài, dính liền, rất khó đọc.
+- JSON Viewer tự định dạng lại thành dạng cây, có thụt lề, tô màu, có thể thu gọn hoặc mở rộng từng nhánh.
+- Nhờ vậy kỹ sư dễ tìm lỗi như thiếu trường dữ liệu, sai kiểu dữ liệu, tọa độ bị null.
+- Không cần dán sang công cụ ngoài nên vừa nhanh vừa an toàn hơn.
+
+## Phần 2. Triển khai
+**Chức năng 1: 5 Extensions thiết yếu**
+
+| Nhóm | Extension | Công dụng |
+|---|---|---|
+| Dev Suite | JSON Viewer | Đọc dữ liệu API GPS dạng JSON |
+| Dev Suite | Wappalyzer | Xem website dùng công nghệ gì |
+| Productivity | ColorZilla | Chấm màu, lấy mã màu trên giao diện |
+| Productivity | Json Formatter / Tab Manager | Quản lý tab, giảm rối khi làm nhiều việc |
+| Security | uBlock Origin | Chặn quảng cáo độc hại |
+
+**Chức năng 2: Phân quyền Site Access**
+1. Vào chrome://extensions, bấm Details ở từng extension.
+2. Ở mục Site access, chọn On click.
+3. Extension chỉ đọc dữ liệu trang khi mình bấm vào nó, nên hạn chế bị lấy dữ liệu nhạy cảm.
+
+**Ghim lên Toolbar**
+- Bấm biểu tượng mảnh ghép (Extensions) cạnh thanh địa chỉ.
+- Bấm biểu tượng ghim cạnh những extension hay dùng (JSON Viewer, uBlock Origin, ColorZilla) để thao tác nhanh.
+
+## Phần 3. Kiểm thử (khi trình duyệt bị lag)
+1. Mở Task Manager của trình duyệt (Shift + Esc) để xem extension nào ăn nhiều RAM, CPU.
+2. Vào chrome://extensions, tắt từng extension một rồi thử lại.
+3. Khi tìm ra extension gây lag thì tắt hoặc gỡ cài đặt, thay bằng cái nhẹ hơn.
+4. Kiểm tra lại bằng biểu đồ Waterfall xem trình duyệt đã mượt chưa.
